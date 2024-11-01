@@ -121,7 +121,6 @@ function validateInput($data, $fields, $isUpdate = false)
     $errors = [];
     $valid = true;
 
-    // Check field validation, except password input
     foreach ($fields as $field => $errorMessage) {
         if (empty($data[$field]) && $field !== 'password' && $field !== 'password_confirm' && $field !== 'old_password') {
             $errors[$field] = $errorMessage;
@@ -131,7 +130,6 @@ function validateInput($data, $fields, $isUpdate = false)
         }
     }
 
-    // Check password validation
     if (!empty($data['password']) || !empty($data['password_confirm'])) {
         if ($data['password'] !== $data['password_confirm']) {
             $errors['password_confirm'] = 'Password did not match';
@@ -248,10 +246,8 @@ function update($table, $data, $where)
     $fields = [];
     foreach ($data as $column => $value) {
         if ($column === 'password') {
-            // Hash password if a new password is provided
             $value = password_hash($value, PASSWORD_DEFAULT);
         } elseif ($column === 'gambar' && $_FILES['gambar']['error'] !== 4) {
-            // Upload gambar jika ada
             $image = upload();
             if (!$image) {
                 return false;
@@ -269,7 +265,6 @@ function update($table, $data, $where)
 
     $fields_sql = implode(", ", $fields);
 
-    // Kondisi WHERE
     $where_sql = [];
     foreach ($where as $key => $val) {
         $val = htmlspecialchars($val);
@@ -277,9 +272,7 @@ function update($table, $data, $where)
     }
     $where_clause = implode(" AND ", $where_sql);
 
-    // Query update
     $query = "UPDATE $table SET $fields_sql WHERE $where_clause";
-
 
     mysqli_query($connection, $query);
 
