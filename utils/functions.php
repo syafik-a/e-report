@@ -137,7 +137,6 @@ function validateInput($data, $fields, $isUpdate = false)
         }
     }
 
-    // Check old_password only if it's an update and is filled
     if ($isUpdate && !empty($data['old_password'])) {
         global $connection;
         $userId = $data['id'];
