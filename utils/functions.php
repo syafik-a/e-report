@@ -1,10 +1,5 @@
 <?php
-$hostname = "127.0.0.1";
-$username = "root";
-$password = "";
-$database = "e-report";
-
-$connection = mysqli_connect($hostname, $username, $password, $database);
+include_once($_SERVER['DOCUMENT_ROOT'] . "/utils/connection.php");
 
 function query($query)
 {
@@ -13,14 +8,13 @@ function query($query)
 
     $rows = [];
     if (mysqli_num_rows($result) > 0) {
-        while ($row = mysqli_fetch_array($result)) {
+        while ($row = mysqli_fetch_assoc($result)) {
             $rows[] = $row;
         }
     }
 
     return $rows;
 }
-
 function tambah($data, $table, $fields)
 {
     global $connection;
@@ -122,7 +116,7 @@ function validateInput($data, $fields, $isUpdate = false)
     $valid = true;
 
     foreach ($fields as $field => $errorMessage) {
-        if (empty($data[$field]) && $field !== 'password' && $field !== 'password_confirm' && $field !== 'old_password') {
+        if (empty($data[$field]) && !in_array($field, ['password', 'password_confirm', 'old_password'])) {
             $errors[$field] = $errorMessage;
             $valid = false;
         } else {
@@ -155,47 +149,64 @@ function validateInput($data, $fields, $isUpdate = false)
 
 function handleFormSubmit($data, $table, $action)
 {
-
-    $fields = [
-        'nik' => 'NIK is required',
-        'username' => 'Username is required',
-        'name' => 'Nama is required',
-        'phone_number' => 'Phone Number is required',
-        'password' => 'Password is required',
-        'password_confirm' => 'Confirmation password is required',
-        'role_id' => 'Role must be selected',
-        'old_password' => 'Old password is required'
+    // Define field requirements per table
+    $tableFields = [
+        'users' => [
+            'fields' => [
+                'nik' => 'NIK is required',
+                'username' => 'Username is required',
+                'name' => 'Name is required',
+                'phone_number' => 'Phone Number is required',
+                'password' => 'Password is required',
+                'password_confirm' => 'Confirmation password is required',
+                'role_id' => 'Role must be selected',
+                'old_password' => 'Old password is required'
+            ],
+            'successMessage' => 'User updated successfully',
+            'duplicateMessage' => 'NIK already exists',
+            'failureMessage' => 'User updated failed'
+        ],
+        'reports' => [
+            'fields' => [
+                'title' => 'Title is required',
+                'content' => 'Content is required'
+            ],
+            'successMessage' => 'Report updated successfully',
+            'failureMessage' => 'Report updated failed'
+        ]
     ];
 
+    // Get table-specific fields and messages
+    $fields = $tableFields[$table]['fields'];
     $isUpdate = ($action === 'update');
     $validationResult = validateInput($data, $fields, $isUpdate);
 
     $valid = $validationResult['valid'];
     $errors = $validationResult['errors'];
+    $data = $validationResult['data'];
 
+    // Clean up password fields for update if not provided
     if (empty($data['password']) && $isUpdate) {
         unset($data['password'], $data['password_confirm'], $data['old_password']);
     } else {
         unset($data['password_confirm'], $data['old_password']);
     }
 
-
     if ($valid) {
         $result = $isUpdate ? update($table, $data, ['id' => $data['id']]) : tambah($data, $table, array_keys($fields));
 
-
-        $successMessage = $isUpdate ? 'Berhasil mengubah data' : 'Berhasil menambahkan data';
-        $duplicateMessage = 'NIK sudah ada';
-        $failureMessage = $isUpdate ? 'Gagal mengubah data' : 'Gagal menambahkan data';
+        $successMessage = $tableFields[$table]['successMessage'];
+        $duplicateMessage = $tableFields[$table]['duplicateMessage'] ?? 'Duplicate entry';
+        $failureMessage = $tableFields[$table]['failureMessage'];
 
         if ($result > 0) {
             echo "<script>
             Swal.fire({
-                title: 'Good job!',
+                title: 'Success',
                 text: '$successMessage',
                 icon: 'success'
             }).then((result) => {
-                window.location.href = 'index.php?page=users';
+                window.location.href = 'index.php?page=$table';
             });
             </script>";
         } else if ($result == -1) {
@@ -205,7 +216,7 @@ function handleFormSubmit($data, $table, $action)
                 text: '$duplicateMessage',
                 icon: 'error'
             }).then((result) => {
-                window.location.href = 'index.php?page=users';
+                window.location.href = 'index.php?page=$table';
             });
             </script>";
         } else {
@@ -215,12 +226,12 @@ function handleFormSubmit($data, $table, $action)
                 text: '$failureMessage',
                 icon: 'error'
             }).then((result) => {
-                window.location.href = 'index.php?page=users';
+                window.location.href = 'index.php?page=$table';
             });
             </script>";
         }
     } else {
-        $errorMessage = implode(", ", $errors);
+        $errorMessage = implode(", ", array_values($errors));
         echo "<script>
         Swal.fire({
             title: 'Failed',
@@ -230,6 +241,7 @@ function handleFormSubmit($data, $table, $action)
         </script>";
     }
 }
+
 
 function update($table, $data, $where)
 {

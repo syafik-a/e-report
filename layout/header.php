@@ -16,8 +16,6 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@5/dark.css" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
-    <link rel="stylesheet" href="@sweetalert2/themes/dark/dark.css" />
-    <script src="sweetalert2/dist/sweetalert2.min.js"></script>
     <!-- Modules -->
     <script src="../script/confirmDelete.js"></script>
     <script src="../script/title.js"></script>

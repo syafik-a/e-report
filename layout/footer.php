@@ -7,8 +7,6 @@
 <!-- Apex Chart JS -->
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 <!-- Custome JS -->
-<script src="assets/js/chart.js"></script>
-<script src="assets/js/script.js"></script>
 <script src="https://cdn.ckeditor.com/ckeditor5/43.3.0/ckeditor5.umd.js"></script>
 <script src="../script/ckeditor.js"></script>
 <script src="../script/datatable.js"></script>

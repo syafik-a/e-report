@@ -77,8 +77,8 @@
                 <!-- Dropdown menu -->
                 <div class="hidden z-50 my-4 w-56 text-base list-none bg-white divide-y divide-gray-100 shadow dark:divide-gray-500 dark:bg-gray-100 rounded-xl" id="dropdown">
                     <div class="py-3 px-4">
-                        <span class="block text-sm font-semibold text-gray-800">Adnan Kabir</span>
-                        <span class="block text-sm text-gray-800 truncate">Admin</span>
+                        <span class="block text-sm font-semibold text-gray-800"><?= $_SESSION['name'] ?></span>
+                        <span class="block text-sm text-gray-800 truncate"><?= $_SESSION['username'] ?></span>
                     </div>
                     <ul class="py-1 text-gray-700" aria-labelledby="dropdown">
                         <li>
@@ -90,7 +90,7 @@
                     </ul>
                     <ul class="py-1 text-gray-700" aria-labelledby="dropdown">
                         <li>
-                            <a href="#" class="block py-2 px-4 text-sm hover:bg-blue-200 rounded">Log out</a>
+                            <a href="index.php?page=logout" class="block py-2 px-4 text-sm hover:bg-blue-200 rounded">Log out</a>
                         </li>
                     </ul>
                 </div>

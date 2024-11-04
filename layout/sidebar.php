@@ -30,6 +30,15 @@
                     <span class="ml-3 group-hover:text-white">Reports</span>
                 </a>
             </li>
+            <li>
+                <a href="index.php?page=list" class="flex items-center p-2 text-base font-medium text-primary rounded-lg hover:bg-blue-500 group transition duration-75">
+                    <svg class="w-6 h-6 text-gray-800  dark:text-gray-600 group-hover:text-white transition duration-75" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M9 8h10M9 12h10M9 16h10M4.99 8H5m-.02 4h.01m0 4H5" />
+                    </svg>
+
+                    <span class="ml-3 group-hover:text-white">Report list</span>
+                </a>
+            </li>
         </ul>
 
         <!-- Menu (It's for Lablet and Desktop) -->
@@ -60,6 +69,15 @@
                     </svg>
 
                     <span class="ml-3 group-hover:text-white">Reports</span>
+                </a>
+            </li>
+            <li>
+                <a href="index.php?page=list" class="flex items-center p-2 text-base font-medium text-primary rounded-lg hover:bg-blue-500 group transition duration-75">
+                    <svg class="w-6 h-6 text-gray-800  dark:text-gray-600 group-hover:text-white transition duration-75" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M9 8h10M9 12h10M9 16h10M4.99 8H5m-.02 4h.01m0 4H5" />
+                    </svg>
+
+                    <span class="ml-3 group-hover:text-white">Report list</span>
                 </a>
             </li>
         </ul>

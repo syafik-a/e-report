@@ -1,5 +1,12 @@
 <?php
 ob_start();
+session_start();
+if (!isset($_SESSION['username'])) {
+    header('Location:../auth/login.php');
+} elseif ($_SESSION['role_name'] !== "petugas") {
+    header('Location: ../index.php');
+}
+
 include_once($_SERVER['DOCUMENT_ROOT'] . "/utils/functions.php");
 
 include_once($_SERVER['DOCUMENT_ROOT'] . "/layout/header.php");
@@ -54,6 +61,10 @@ include_once($_SERVER['DOCUMENT_ROOT'] . "/layout/sidebar.php");
         }
     }
 
+    if ($_GET['page'] == "list") {
+        include_once("list.php");
+    }
+
     if ($_GET['page'] == "reports") {
         include_once("reports.php");
     }
@@ -66,6 +77,9 @@ include_once($_SERVER['DOCUMENT_ROOT'] . "/layout/sidebar.php");
         include_once("detail.php");
     }
 
+    if ($_GET['page'] == "logout") {
+        include_once("../utils/auth.php");
+    }
 
 
     ?>
