@@ -104,8 +104,8 @@ include_once($_SERVER['DOCUMENT_ROOT'] . "/layout/sidebar.php");
         if (isset($_GET['id']) && !empty($_GET['id'])) {
             $id = $_GET['id'];
 
-            if (hapus('id', 'reports', $id) > 0) {
-                echo "<script>
+            approve('reports', $id);
+            echo "<script>
                 Swal.fire({
                     title: 'Good job!',
                     text: 'Report has been approved successfully',
@@ -114,17 +114,6 @@ include_once($_SERVER['DOCUMENT_ROOT'] . "/layout/sidebar.php");
                         window.location.href = 'index.php?page=list';
                     });
                 </script>";
-            } else {
-                echo "<script>
-                Swal.fire({
-                    title: 'Failed!',
-                    text: 'Report failed to be approved',
-                    icon: 'error'
-                    }).then((result) => {
-                        window.location.href = 'index.php?page=list';
-                    });
-                </script>";
-            }
         } else {
             header("Location: /admin/index.php?page=list");
             exit();

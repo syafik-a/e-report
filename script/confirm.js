@@ -22,7 +22,7 @@ function confirmApprove(page, query, identifier) {
     showCancelButton: true,
     confirmButtonColor: "#3085d6",
     cancelButtonColor: "#d33",
-    confirmButtonText: "Yes, delete it!",
+    confirmButtonText: "Yes, approve it!",
   }).then((result) => {
     if (result.isConfirmed) {
       window.location.href = `index.php?page=${page}&${query}=${identifier}`;
