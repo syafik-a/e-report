@@ -16,7 +16,6 @@ header('refresh:3;Content-Type: text/html; charset=UTF-8');
         <?php else : ?>
             <?php
             foreach ($reports as $report) :
-
                 $report['content'] = html_entity_decode(html_entity_decode(strval($report['content'])));
 
             ?>
@@ -30,7 +29,7 @@ header('refresh:3;Content-Type: text/html; charset=UTF-8');
                                 <div class="flex items-center mb-4">
                                     <div class="flex-1 min-w-0">
                                         <p class="text-sm font-medium text-gray-600 truncate"><?= $report['user_name'] ?></p>
-                                        <p class="text-xs text-gray-500 truncate dark:text-gray-400"><?= timeAgo($report['created_at']) ?></p>
+                                        <p class="text-xs text-gray-500 truncate dark:text-gray-400"><?= $report['created_at'] ?></p>
                                     </div>
                                 </div>
                                 <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-600"><?= $report['title'] ?></h5>

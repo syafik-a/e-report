@@ -318,6 +318,7 @@ function timeAgo($timestamp)
     if ($timeDifference < 0) {
         return 'just now';
     }
+
     if ($timeDifference < 60) {
         return $timeDifference . ' seconds ago';
     } elseif ($timeDifference < 3600) {

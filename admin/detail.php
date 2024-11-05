@@ -1,3 +1,12 @@
+<?php
+$id = htmlspecialchars($_GET['id']);
+$report = query("SELECT reports.*, users.name as user_name FROM reports
+                     JOIN users ON reports.user_id = users.id
+                     WHERE reports.id='$id'
+                     ");
+$report = $report[0];
+?>
+
 <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
     <div class="border-2 col-span-1 md:col-span-3 border-dashed rounded-lg border-gray-300 dark:border-gray-600 h-auto mb-4">
         <div class="block h-full">
@@ -7,15 +16,15 @@
                     <div class="flex items-center mb-4">
                         <div class="flex-1 min-w-0">
                             <p class="text-sm font-medium text-gray-600 truncate">
-                                Neil Sims
+                                <?= $report['user_name'] ?>
                             </p>
                             <p class="text-xs text-gray-500 truncate dark:text-gray-400">
-                                Oct 30 <?= htmlspecialchars($_GET['id']) ?>
+                                <?= $report['created_at'] ?>
                             </p>
                         </div>
                     </div>
-                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-600">Noteworthy technology acquisitions 2021</h5>
-                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 flex-grow">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order...</p>
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-600"><?= $report['title'] ?></h5>
+                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 flex-grow"><?= html_entity_decode(html_entity_decode(strval($report['content']))) ?></p>
                 </div>
                 <div class="container border-t-2 border-gray-300 ">
                     <h1 class="font-bold text-2xl text-center text-gray-900 mt-10">Comments (3)</h1>
