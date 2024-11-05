@@ -1,9 +1,7 @@
 <?php
 include_once($_SERVER['DOCUMENT_ROOT'] . "/utils/functions.php");
 
-$users = query("SELECT users.id, users.username, users.nik, users.name, users.phone_number, users.role_id, roles.name as role_name
-    FROM users 
-    JOIN roles ON users.role_id = roles.id");
+$reports = query("SELECT reports.*, users.name FROM reports JOIN users ON users.id = reports.user_id");
 
 $roles = query("SELECT * FROM roles");
 
@@ -35,7 +33,7 @@ $roles = query("SELECT * FROM roles");
             </tr>
         </thead>
         <tbody>
-            <?php if (empty($users)) : ?>
+            <?php if (empty($reports)) : ?>
                 <tr>
                     <td colspan="6" class="bg-blue-400 px-6 py-4 text-center text-white">
                         Data kosong
@@ -44,25 +42,25 @@ $roles = query("SELECT * FROM roles");
             <?php else :
                 $no = 1;
             ?>
-                <?php foreach ($users as $user) : ?>
+                <?php foreach ($reports as $report) : ?>
                     <tr class="bg-blue-400 border-b hover:bg-blue-500 text-white">
                         <td class="px-6 py-4 font-bold">
                             <?= $no++ ?>
                         </td>
                         <td class="px-6 py-4 font-bold">
-                            <?= $user['nik'] ?>
+                            <?= $report['name'] ?>
                         </td>
                         <th scope="row" class="px-6 py-4 font-medium text-white whitespace-nowrap">
-                            <?= $user['name'] ?>
+                            <?= $report['title'] ?>
                         </th>
                         <td class="px-6 py-4">
-                            <?= $user['phone_number'] ?>
+                            <?= $report['created_at'] ?>
                         </td>
                         <td class="px-6 py-4">
-                            <?= $user['role_name'] ?>
+                            <?= $report['status'] == 0 ?  "Not solved" : "Solved" ?>
                         </td>
                         <td class="px-6 py-4 flex justify-start items-center ">
-                            <a data-modal-target="edit-modal-<?= $user['id'] ?>" data-modal-toggle="edit-modal-<?= $user['id'] ?>" href="#" class="font-medium text-white hover:underline mr-2">
+                            <a data-modal-target="edit-modal-<?= $report['id'] ?>" data-modal-toggle="edit-modal-<?= $user['id'] ?>" href="#" class="font-medium text-white hover:underline mr-2">
                                 <svg class="w-4 h-4 md:w-5 md:h-5 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z" />
                                 </svg>

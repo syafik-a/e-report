@@ -1,6 +1,6 @@
 <div class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-4">
     <div class="border-2 col-span-1 md:col-span-4 border-dashed rounded-lg border-gray-300 dark:border-gray-600 h-auto mb-4">
-        <form class="py-5 px-6" method="post">
+        <form class="py-5 px-6" method="post" enctype="multipart/form-data">
             <div class="space-y-12">
                 <div class="border-b border-gray-900/10 pb-12">
                     <h2 class="text-base/7 font-semibold text-gray-900">Report</h2>
@@ -25,7 +25,7 @@
                         </div>
 
                         <div class="col-span-full">
-                            <label for="cover-photo" class="block text-sm/6 font-medium text-gray-900">Thumbnail</label>
+                            <label for="thumbnail" class="block text-sm/6 font-medium text-gray-900">Thumbnail</label>
                             <input id="thumbnail" name="thumbnail" type="file" accept="image/png, image/jpeg, image/jpg">
                         </div>
 

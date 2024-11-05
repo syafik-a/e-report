@@ -1,13 +1,12 @@
 <?php
 
 global $connection;
-include_once($_SERVER['DOCUMENT_ROOT'] . "/utils/functions.php");
-
+require_once($_SERVER['DOCUMENT_ROOT'] . "/utils/functions.php");
 
 if (isset($_POST["login"])) {
     $notification = login($_POST);
     if ($notification) {
-        header("Location: ../auth/login.php?notification=" . urlencode($notification));
+        header("Location: /auth/login.php?notification=" . urlencode($notification));
         exit;
     }
 }
@@ -37,6 +36,7 @@ function login($data)
             // Set session data
             $_SESSION["login"] = true;
             $_SESSION["name"] = $result[0]["name"];
+            $_SESSION["user_id"] = $result[0]["id"];
             $_SESSION["username"] = $result[0]["username"];
             $_SESSION["role_name"] = $result[0]["role_name"];
 
@@ -90,6 +90,6 @@ function logout()
     setcookie('key', '', time() - 3600);
 
     // Redirect to login page
-    header("Location: ../auth/login.php");
+    header("Location: /auth/login.php");
     exit;
 }
