@@ -43,6 +43,11 @@ function tambah($data, $table, $fields)
         $values[] = "'" . $data['user_id'] . "'";
     }
 
+    if (isset($data['status'])) {
+        $columns[] = 'status';
+        $values[] = "'" . $data['status'] . "'";
+    }
+
     if (isset($data['slug'])) {
         $columns[] = 'slug';
         $values[] = "'" . $data['slug'] . "'";
@@ -124,6 +129,12 @@ function update($table, $data, $where)
 function hapus($identifier, $table, $id)
 {
     global $connection;
+    $id = htmlspecialchars($id);
+    $data = query("SELECT * FROM reports WHERE id='$id'");
+    $data = $data[0];
+    if (isset($data['thumbnail'])) {
+        unlink("../assets/upload/" . $data['thumbnail']);
+    }
     mysqli_query($connection, "DELETE FROM $table WHERE $identifier='$id'");
     return mysqli_affected_rows($connection);
 }
@@ -195,6 +206,7 @@ function handleFormSubmit($data, $table, $action)
     ];
 
     if ($table === 'reports') {
+        $data['status'] = 0;
         $data['user_id'] = $_SESSION['user_id'];
         $data['slug'] = strtolower(str_replace(" ", "-", $data['title']));
     }

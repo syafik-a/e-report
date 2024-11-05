@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@5/dark.css" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
     <!-- Modules -->
-    <script src="../script/confirmDelete.js"></script>
+    <script src="../script/confirm.js"></script>
     <script src="../script/title.js"></script>
 
     <title>Lapor Heker</title>
