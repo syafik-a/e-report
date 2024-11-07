@@ -1,17 +1,16 @@
 <?php
 ob_start();
 session_start();
+
 if (!isset($_SESSION['username'])) {
     header('Location: /auth/login.php');
-} elseif ($_SESSION['role_name'] !== "petugas") {
-    header('Location: /index.php');
 }
 
 include_once($_SERVER['DOCUMENT_ROOT'] . "/utils/functions.php");
 
 include_once($_SERVER['DOCUMENT_ROOT'] . "/layout/header.php");
 if (!isset($_GET['page'])) {
-    header("Location: /admin/index.php?page=dashboard");
+    header("Location: /index.php?page=dashboard");
 }
 
 include_once($_SERVER['DOCUMENT_ROOT'] . "/layout/navbar.php");
@@ -27,7 +26,19 @@ include_once($_SERVER['DOCUMENT_ROOT'] . "/layout/sidebar.php");
     }
 
     if ($_GET['page'] == "users") {
-        include_once("users.php");
+        if ($_SESSION['role_name'] === 'superadmin') {
+            include_once("create-report.php");
+        } else {
+            echo "<script>
+                Swal.fire({
+                    title: 'Unauthorized',
+                    text: 'You don\'t have access to this page',
+                    icon: 'error'
+                    }).then((result) => {
+                        window.history.back();
+                    });
+                </script>";
+        }
     }
 
     if ($_GET['page'] == "users_delete") {
@@ -56,7 +67,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . "/layout/sidebar.php");
                 </script>";
             }
         } else {
-            header("Location: /admin/index.php?page=users");
+            header("Location: /index.php?page=users");
             exit();
         }
     }
@@ -95,7 +106,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . "/layout/sidebar.php");
                 </script>";
             }
         } else {
-            header("Location: /admin/index.php?page=list");
+            header("Location: /index.php?page=list");
             exit();
         }
     }
@@ -115,13 +126,25 @@ include_once($_SERVER['DOCUMENT_ROOT'] . "/layout/sidebar.php");
                     });
                 </script>";
         } else {
-            header("Location: /admin/index.php?page=list");
+            header("Location: /index.php?page=list");
             exit();
         }
     }
 
     if ($_GET['page'] == "create") {
-        include_once("create-report.php");
+        if ($_SESSION['role_name'] === 'masyarakat') {
+            include_once("create-report.php");
+        } else {
+            echo "<script>
+                Swal.fire({
+                    title: 'Unauthorized',
+                    text: 'You don\'t have access to this page',
+                    icon: 'error'
+                    }).then((result) => {
+                        window.history.back();
+                    });
+                </script>";
+        }
     }
 
     if ($_GET['page'] == "detail" && isset($_GET["id"])) {
@@ -129,7 +152,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . "/layout/sidebar.php");
     }
 
     if ($_GET['page'] == "logout") {
-        include_once("../utils/auth.php");
+        include_once($_SERVER['DOCUMENT_ROOT'] . "/utils/auth.php");
     }
 
 

@@ -57,10 +57,10 @@ $roles = query("SELECT * FROM roles");
                             <?= $report['created_at'] ?>
                         </td>
                         <td class="px-6 py-4">
-                            <?= $report['status'] === 0 ?  "Not solved" : "Solved" ?>
+                            <?= $report['status'] == 0 ?  "Not solved" : "Solved" ?>
                         </td>
                         <td class="px-6 py-4 flex justify-start items-center ">
-                            <?php if ($report['status'] === 0) : ?>
+                            <?php if ($report['status'] == 0) : ?>
                                 <a href="#" onclick="confirmApprove('reports_approve', 'id', <?= $report['id'] ?>)" class="font-medium text-white hover:underline">
                                     <svg class="mr-4 w-4 h-4 md:w-5 md:h-5 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />

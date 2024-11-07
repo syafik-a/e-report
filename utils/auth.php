@@ -47,7 +47,7 @@ function login($data)
                     text: 'Login successful!',
                     icon: 'success'
                 }).then((result) => {
-                    window.location.href = '/admin/index.php';
+                    window.location.href = '/index.php';
                 });
             </script>";
         } else {

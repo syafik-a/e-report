@@ -130,6 +130,9 @@ function hapus($identifier, $table, $id)
     global $connection;
     $id = htmlspecialchars($id);
     $data = query("SELECT * FROM reports WHERE id='$id'");
+    if (!isset($data)) {
+        return -1;
+    }
     $data = $data[0];
     if (isset($data['thumbnail'])) {
         unlink("../assets/upload/" . $data['thumbnail']);
@@ -227,12 +230,16 @@ function handleFormSubmit($data, $table, $action)
     $fields = $tableFields[$table]['fields'];
 
     $isUpdate = ($action === 'update');
+
+    if (!$isUpdate && isset($fields['old_password'])) {
+        unset($fields['old_password']);
+    }
+
     $validationResult = validateInput($data, $fields, $isUpdate);
 
     $valid = $validationResult['valid'];
     $errors = $validationResult['errors'];
     $data = $validationResult['data'];
-
     // Clean up password fields for update if not provided
     if (empty($data['password']) && $isUpdate) {
         unset($data['password'], $data['password_confirm'], $data['old_password']);

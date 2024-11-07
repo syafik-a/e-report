@@ -22,12 +22,18 @@
             </div>
 
             <div class="flex items-center gap-3 lg:order-2">
-                <a href="index.php?page=create" type="button" class="group inline-flex items-center px-4 py-2 text-sm font-medium text-blue-900 bg-transparent border border-blue-600 rounded hover:bg-blue-600 hover:text-white focus:z-10 focus:ring-2 ">
-                    <svg class="w-4 h-4 mr-2 text-blue-900 group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 7.757v8.486M7.757 12h8.486M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                    </svg>
-                    Create Report
-                </a>
+                <?php
+
+                if ($_SESSION['role_name'] === 'masyarakat') :
+                ?>
+                    <a href="index.php?page=create" type="button" class="group inline-flex items-center px-4 py-2 text-sm font-medium text-blue-900 bg-transparent border border-blue-600 rounded hover:bg-blue-600 hover:text-white focus:z-10 focus:ring-2 ">
+                        <svg class="w-4 h-4 mr-2 text-blue-900 group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 7.757v8.486M7.757 12h8.486M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                        Create Report
+                    </a>
+
+                <?php endif ?>
                 <!-- Notification icon -->
                 <button type="button" data-dropdown-toggle="notification-dropdown" class="flex items-center justify-center relative w-9 h-9 rounded-xl text-gray-600 bg-blue-200 hover:bg-acent1 hover:text-white focus:bg-acent1 focus:text-white transition-all duration-200">
                     <span class="absolute flex h-5 w-6 -top-2 -right-3">
