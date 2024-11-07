@@ -3,15 +3,17 @@
     <div class="overflow-y-auto py-5 px-3 h-full bg-white">
         <!-- Menu (It's for mobile) -->
         <ul class="space-y-0.5 inline lg:hidden">
-            <li>
-                <a href="index.php?page=dashboard" class="flex items-center p-2 text-base font-medium text-primary rounded-lg hover:bg-blue-500 group transition duration-75">
-                    <svg class="w-6 h-6 text-gray-800  dark:text-gray-600 group-hover:text-white transition duration-75" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M20 6H10m0 0a2 2 0 1 0-4 0m4 0a2 2 0 1 1-4 0m0 0H4m16 6h-2m0 0a2 2 0 1 0-4 0m4 0a2 2 0 1 1-4 0m0 0H4m16 6H10m0 0a2 2 0 1 0-4 0m4 0a2 2 0 1 1-4 0m0 0H4" />
-                    </svg>
+            <?php if ($_SESSION['role_name'] !== 'masyarakat'): ?>
+                <li>
+                    <a href="index.php?page=dashboard" class="flex items-center p-2 text-base font-medium text-primary rounded-lg hover:bg-blue-500 group transition duration-75">
+                        <svg class="w-6 h-6 text-gray-800  dark:text-gray-600 group-hover:text-white transition duration-75" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M20 6H10m0 0a2 2 0 1 0-4 0m4 0a2 2 0 1 1-4 0m0 0H4m16 6h-2m0 0a2 2 0 1 0-4 0m4 0a2 2 0 1 1-4 0m0 0H4m16 6H10m0 0a2 2 0 1 0-4 0m4 0a2 2 0 1 1-4 0m0 0H4" />
+                        </svg>
 
-                    <span class="ml-3 group-hover:text-white">Dashboard</span>
-                </a>
-            </li>
+                        <span class="ml-3 group-hover:text-white">Dashboard</span>
+                    </a>
+                </li>
+            <?php endif ?>
             <?php if ($_SESSION['role_name'] === 'superadmin'): ?>
                 <li>
                     <a href="index.php?page=users" class="flex items-center p-2 text-base font-medium text-primary rounded-lg hover:bg-blue-500 group transition duration-75">
@@ -45,15 +47,17 @@
 
         <!-- Menu (It's for Lablet and Desktop) -->
         <ul class="hidden lg:inline space-y-0.5">
-            <li>
-                <a href="index.php?page=dashboard" class="flex items-center p-2 text-base font-medium text-primary rounded-lg hover:bg-blue-500 group transition duration-75">
-                    <svg class="w-6 h-6 text-gray-800  dark:text-gray-600 group-hover:text-white transition duration-75" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M20 6H10m0 0a2 2 0 1 0-4 0m4 0a2 2 0 1 1-4 0m0 0H4m16 6h-2m0 0a2 2 0 1 0-4 0m4 0a2 2 0 1 1-4 0m0 0H4m16 6H10m0 0a2 2 0 1 0-4 0m4 0a2 2 0 1 1-4 0m0 0H4" />
-                    </svg>
+            <?php if ($_SESSION['role_name'] !== 'masyarakat'): ?>
+                <li>
+                    <a href="index.php?page=dashboard" class="flex items-center p-2 text-base font-medium text-primary rounded-lg hover:bg-blue-500 group transition duration-75">
+                        <svg class="w-6 h-6 text-gray-800  dark:text-gray-600 group-hover:text-white transition duration-75" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M20 6H10m0 0a2 2 0 1 0-4 0m4 0a2 2 0 1 1-4 0m0 0H4m16 6h-2m0 0a2 2 0 1 0-4 0m4 0a2 2 0 1 1-4 0m0 0H4m16 6H10m0 0a2 2 0 1 0-4 0m4 0a2 2 0 1 1-4 0m0 0H4" />
+                        </svg>
 
-                    <span class="ml-3 group-hover:text-white">Dashboard</span>
-                </a>
-            </li>
+                        <span class="ml-3 group-hover:text-white">Dashboard</span>
+                    </a>
+                </li>
+            <?php endif ?>
             <?php if ($_SESSION['role_name'] === 'superadmin'): ?>
 
                 <li>

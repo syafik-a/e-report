@@ -22,12 +22,24 @@ include_once($_SERVER['DOCUMENT_ROOT'] . "/layout/sidebar.php");
 <main class="flex flex-col gap-4 md:gap-5 px-4 lg:px-5 lg:ml-56 h-auto pt-20 pb-5">
     <?php
     if ($_GET['page'] == "" || $_GET["page"] == "dashboard") {
-        include_once("dashboard.php");
+        if ($_SESSION['role_name'] !== 'masyarakat') {
+            include_once("dashboard.php");
+        } else {
+            echo "<script>
+                    Swal.fire({
+                        title: 'Unauthorized',
+                        text: 'You don\'t have access to this page',
+                        icon: 'error'
+                        }).then((result) => {
+                            window.history.back();
+                        });
+                    </script>";
+        }
     }
 
     if ($_GET['page'] == "users") {
         if ($_SESSION['role_name'] === 'superadmin') {
-            include_once("create-report.php");
+            include_once("users.php");
         } else {
             echo "<script>
                 Swal.fire({

@@ -11,7 +11,7 @@ $report = $report[0];
     <div class="border-2 col-span-1 md:col-span-3 border-dashed rounded-lg border-gray-300 dark:border-gray-600 h-auto mb-4">
         <div class="block h-full">
             <div class="max-w-full border border-gray-200 rounded-lg shadow h-full flex flex-col">
-                <img class="rounded-t-lg w-full h-48 object-cover" src="https://flowbite.com/docs/images/blog/image-1.jpg" alt="" />
+                <img class="rounded-t-lg w-full h-48 object-cover" src="<?= "/assets/upload/" . $report['thumbnail'] ?>" alt="" />
                 <div class="p-5 flex-grow flex flex-col">
                     <div class="flex items-center mb-4">
                         <div class="flex-1 min-w-0">

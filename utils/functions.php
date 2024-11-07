@@ -133,8 +133,7 @@ function hapus($identifier, $table, $id)
     if (!isset($data)) {
         return -1;
     }
-    $data = $data[0];
-    if (isset($data['thumbnail'])) {
+    if (isset($data[0]['thumbnail'])) {
         unlink("../assets/upload/" . $data['thumbnail']);
     }
     mysqli_query($connection, "DELETE FROM $table WHERE $identifier='$id'");
