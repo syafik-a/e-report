@@ -8,24 +8,24 @@
 
                     <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                         <div class="col-span-full">
-                            <label for="title" class="block text-sm font-medium text-gray-900">Title</label>
+                            <label for="title" class="block text-sm font-medium text-gray-900">What is your feedback/complaint to us?</label>
                             <div class="mt-2">
                                 <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 w-full">
-                                    <input type="text" name="title" id="title" class="ml-4 block w-full border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm" placeholder="janesmith">
+                                    <input type="text" name="title" id="title" class="ml-4 block w-full border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm" placeholder="What is it about?">
                                 </div>
                             </div>
                         </div>
 
                         <div class="col-span-full">
-                            <label for="content" class="block text-sm/6 font-medium text-gray-900">Content</label>
+                            <label for="content" class="block text-sm/6 font-medium text-gray-900">Describe/explain the feedback/complaint you would like to give to us</label>
                             <div class="mt-2">
                                 <textarea id="content" name="content" rows="3" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"></textarea>
                             </div>
-                            <p class="mt-3 text-sm/6 text-gray-600">Write a few sentences about yourself.</p>
+                            <p class="mt-3 text-sm/6 text-gray-600">Write a short one or long one, anything you'd like to prefer</p>
                         </div>
 
                         <div class="col-span-full">
-                            <label for="thumbnail" class="block text-sm/6 font-medium text-gray-900">Thumbnail</label>
+                            <label for="thumbnail" class="block text-sm/6 font-medium text-gray-900">Provide an image to make it much more clear for us</label>
                             <input id="thumbnail" name="thumbnail" type="file" accept="image/png, image/jpeg, image/jpg">
                         </div>
 

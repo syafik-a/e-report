@@ -24,9 +24,8 @@ if (isset($_SESSION['login'])) {
     <div class="container mx-auto p-8 flex">
         <div class="max-w-md w-full mx-auto">
             <div class="container flex flex-col justify-center items-center">
-                <img src="../assets/images/logo.png " class="mr-3 w-1/4" alt="Logo" />
-                <span class="bg-gradient-to-r text-transparent from-green-500 to-black bg-clip-text">
-                    <h1 class="text-4xl text-center mb-12 font-bold ">Login lur</h1>
+                <span class="bg-gradient-to-r text-transparent from-stone-400 to-neutral-800 bg-clip-text">
+                    <h1 class="text-4xl text-center mt-44 mb-20 font-bold ">Admin Login</h1>
                 </span>
 
             </div>

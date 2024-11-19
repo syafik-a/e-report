@@ -20,7 +20,7 @@
     <script src="../script/confirm.js"></script>
     <script src="../script/title.js"></script>
 
-    <title>Lapor Heker</title>
+    <title>FootStyles Feedback & Report Page</title>
 
 </head>
 

@@ -22,9 +22,9 @@ include_once($_SERVER['DOCUMENT_ROOT'] . "/layout/sidebar.php");
 <main class="flex flex-col gap-4 md:gap-5 px-4 lg:px-5 lg:ml-56 h-auto pt-20 pb-5">
     <?php
     if ($_GET['page'] == "" || $_GET["page"] == "dashboard") {
-        if ($_SESSION['role_name'] !== 'masyarakat') {
+        if ($_SESSION['role_name'] !== 'customer') {
             include_once("dashboard.php");
-        } else {
+        } else { 
             echo "<script>
                     Swal.fire({
                         title: 'Unauthorized',
@@ -144,7 +144,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . "/layout/sidebar.php");
     }
 
     if ($_GET['page'] == "create") {
-        if ($_SESSION['role_name'] === 'masyarakat') {
+        if ($_SESSION['role_name'] === 'customer') {
             include_once("create-report.php");
         } else {
             echo "<script>

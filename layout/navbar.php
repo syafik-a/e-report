@@ -13,7 +13,7 @@
                 <!-- Logo -->
                 <a href="/" class="flex items-center justify-between mr-4">
                     <img src="../assets/images/logo.png" class="mr-3 h-8 hidden md:inline" alt="Logo" />
-                    <span class="self-center text-2xl font-semibold whitespace-nowrap">Lapor <span class="text-green-800 font-bold">Heker</span></span>
+                    <span class="self-center text-2xl font-semibold whitespace-nowrap">Foot<span class="text-yellow-400 font-bold">Styles</span></span>
                 </a>
 
                 <!-- Tab Name -->
@@ -24,7 +24,7 @@
             <div class="flex items-center gap-3 lg:order-2">
                 <?php
 
-                if ($_SESSION['role_name'] === 'masyarakat') :
+                if ($_SESSION['role_name'] === 'customer') :
                 ?>
                     <a href="index.php?page=create" type="button" class="group inline-flex items-center px-4 py-2 text-sm font-medium text-blue-900 bg-transparent border border-blue-600 rounded hover:bg-blue-600 hover:text-white focus:z-10 focus:ring-2 ">
                         <svg class="w-4 h-4 mr-2 text-blue-900 group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">

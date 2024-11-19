@@ -3,7 +3,7 @@
     <div class="overflow-y-auto py-5 px-3 h-full bg-white">
         <!-- Menu (It's for mobile) -->
         <ul class="space-y-0.5 inline lg:hidden">
-            <?php if ($_SESSION['role_name'] !== 'masyarakat'): ?>
+            <?php if ($_SESSION['role_name'] !== 'customer'): ?>
                 <li>
                     <a href="index.php?page=dashboard" class="flex items-center p-2 text-base font-medium text-primary rounded-lg hover:bg-blue-500 group transition duration-75">
                         <svg class="w-6 h-6 text-gray-800  dark:text-gray-600 group-hover:text-white transition duration-75" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
@@ -47,7 +47,7 @@
 
         <!-- Menu (It's for Lablet and Desktop) -->
         <ul class="hidden lg:inline space-y-0.5">
-            <?php if ($_SESSION['role_name'] !== 'masyarakat'): ?>
+            <?php if ($_SESSION['role_name'] !== 'customer'): ?>
                 <li>
                     <a href="index.php?page=dashboard" class="flex items-center p-2 text-base font-medium text-primary rounded-lg hover:bg-blue-500 group transition duration-75">
                         <svg class="w-6 h-6 text-gray-800  dark:text-gray-600 group-hover:text-white transition duration-75" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">

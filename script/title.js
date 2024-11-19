@@ -1,4 +1,4 @@
-let titleText = "Lapor Heker - ";
+let titleText = "FootStyles Feedback & Report Page -";
 let speed = 300;
 
 function scrollTitle() {
